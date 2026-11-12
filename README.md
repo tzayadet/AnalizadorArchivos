@@ -114,7 +114,9 @@ un PC con Windows** (el .exe de Windows no se puede generar desde Linux/Mac):
      del sistema,
    - instala PyInstaller,
    - genera un único ejecutable `.exe` (modo `--onefile --windowed`),
-   - limpia los archivos temporales.
+   - construye en un directorio temporal independiente y lo elimina al terminar;
+   - conserva los directorios y archivos preexistentes del proyecto;
+   - evita sobrescribir ejecutables: si ya existe el nombre, genera una variante numerada.
 5. Al terminar, encontrarás tu ejecutable en:
 
    ```
