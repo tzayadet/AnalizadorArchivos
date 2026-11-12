@@ -63,7 +63,7 @@ cada análisis, con:
   detectados en un archivo (la tabla solo muestra el número, por espacio).
 - **Seleccionar todo** o **seleccionar solo los duplicados** con un clic (para
   no tener que ir marcando fila a fila con Ctrl/Shift).
-- **Eliminar** los archivos seleccionados (con confirmación).
+- **Eliminar** los archivos seleccionados (con confirmación explícita). El borrado es permanente: no utiliza la Papelera de reciclaje de Windows ni una papelera equivalente.
 - **Mover los archivos seleccionados a una carpeta** que tú elijas. Si en esa
   carpeta ya existe un archivo con el mismo nombre, el programa **lo renombra
   automáticamente** (`archivo (1).txt`, `archivo (2).txt`...) para que nunca
@@ -71,7 +71,7 @@ cada análisis, con:
   nombre procedentes de carpetas distintas.
 - **Sobre los grupos de duplicados**, dos acciones dedicadas que siempre
   conservan 1 copia por grupo en su ubicación original:
-  - **Eliminar el resto**: borra todas las copias repetidas excepto la primera.
+  - **Eliminar el resto**: borra permanentemente todas las copias repetidas excepto la primera. Revisa los grupos antes de confirmar.
   - **Mover el resto a una carpeta**: en vez de borrarlas, las mueve a una
     carpeta de tu elección (por ejemplo, una carpeta "Duplicados" para
     revisarlas antes de decidir), con el mismo renombrado automático
