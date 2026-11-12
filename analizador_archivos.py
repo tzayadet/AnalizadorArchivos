@@ -78,6 +78,7 @@ import hashlib               # Calcular el hash SHA-256 de los archivos (detecci
 import threading                # Ejecutar el escaneo en segundo plano sin congelar la interfaz
 import subprocess                 # Abrir el explorador de archivos del sistema operativo
 import platform                    # Detectar si estamos en Windows / macOS / Linux
+from csv_safety import csv_safe_cell
 from datetime import datetime         # Fechas de modificación y filtros por fecha
 
 import tkinter as tk                     # Interfaz gráfica
@@ -1304,12 +1305,13 @@ class App(tk.Tk):
                 writer.writerow(["Nombre", "Ruta", "Espacio (bytes)", "Espacio legible",
                                   "Modificado", "Hash SHA-256", "Nº errores", "Detalle errores", "Motivo(s)"])
                 for m in self.results:
-                    writer.writerow([
+                    row = [
                         m["name"], m["path"], m["size"], human_size(m["size"]),
                         datetime.fromtimestamp(m["mtime"]).strftime("%Y-%m-%d %H:%M:%S"),
                         m["hash"] or "", m.get("error_count", 0),
                         " | ".join(m.get("errors", [])), "; ".join(m["reasons"]),
-                    ])
+                    ]
+                    writer.writerow([csv_safe_cell(value) for value in row])
             messagebox.showinfo("Exportado", f"Resultados exportados a:\n{path}")
         except Exception as e:
             messagebox.showerror("Error al exportar", str(e))
