@@ -1,6 +1,6 @@
 # Analizador de Archivos PRO
 
-**Showcase:** https://tzayadet.github.io/AnalizadorArchivos/
+**Showcase source:** [docs/index.html](docs/index.html) · GitHub Pages deployment is ready but requires enabling Pages in repository settings.
 
 [![Python syntax check](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml/badge.svg)](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml)
 
