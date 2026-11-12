@@ -1,12 +1,22 @@
-# Analizador de Archivos PRO
+<p align="center">
+  <img src="https://img.shields.io/badge/DESKTOP_UTILITY-FILE_ANALYZER-101010?style=for-the-badge&labelColor=050805&color=00FF41" alt="File Analyzer"/>
+  <img src="https://img.shields.io/badge/PYTHON-WINDOWS_%2F_DESKTOP-101010?style=for-the-badge&logo=python&logoColor=00FF41" alt="Python"/>
+</p>
+
+# File Analyzer
+
+Herramienta de escritorio para buscar, filtrar y analizar archivos en una o varias carpetas. Combina criterios de búsqueda, detecta duplicados exactos y permite exportar resultados.
+
+<p align="center">
+  <a href="https://tzayadet.github.io/AnalizadorArchivos/"><strong>PROJECT SHOWCASE ↗</strong></a> ·
+  <a href="https://github.com/tzayadet/AnalizadorArchivos"><strong>SOURCE CODE</strong></a>
+</p>
 
 [![Python syntax check](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml/badge.svg)](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml)
 
-**Project showcase:** [Open the project page](https://tzayadet.github.io/AnalizadorArchivos/) · [Source](docs/index.html)
+> GitHub Pages contiene una ficha de presentación. La aplicación de escritorio no se ejecuta dentro del navegador.
 
-Herramienta de escritorio para buscar, filtrar y detectar archivos duplicados en una o varias carpetas. Permite combinar criterios, analizar el espacio ocupado y exportar resultados.
-
-## Funcionalidades
+## Features
 
 - Búsqueda por nombre, extensión, contenido, tamaño y fechas.
 - Combinación de filtros mediante condiciones AND/OR.
@@ -14,38 +24,44 @@ Herramienta de escritorio para buscar, filtrar y detectar archivos duplicados en
 - Resumen de espacio ocupado y potencialmente recuperable.
 - Registro de errores de acceso y análisis.
 - Exportación de resultados a CSV.
-- Apertura de ubicaciones, copia de rutas y movimiento de archivos con nombres anti-colisión.
+- Apertura de ubicaciones y copia de rutas.
+- Movimiento de archivos con nombres anti-colisión.
 
-## Requisitos y ejecución
+## Run locally
 
-Python 3.10 o superior. Tkinter suele incluirse con las distribuciones estándar de Python.
+**Requirements:** Python 3.10+. Tkinter suele estar incluido en las distribuciones estándar de Python.
 
 ```bash
 python analizador_archivos.py
 ```
 
-En Windows también puedes utilizar `build_exe.bat` para generar un ejecutable con PyInstaller.
+En Windows, `build_exe.bat` permite generar un ejecutable mediante PyInstaller.
 
-## Seguridad de operaciones
-
-Las acciones de eliminación son permanentes y no utilizan la Papelera de reciclaje. Revisa los archivos seleccionados antes de confirmar. Para una operación reversible, utiliza primero la función de mover archivos a otra carpeta.
-
-La detección por hash identifica contenido idéntico; no demuestra que un archivo sea seguro o auténtico.
-
-## Pruebas
+## Tests
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-## Publicar la página de presentación
+## Project layout
 
-1. En **Settings → Pages**, selecciona **GitHub Actions** como origen de publicación.
-2. En **Settings → Secrets and variables → Actions → Variables**, crea `ENABLE_PAGES` con valor `true`.
-3. Ejecuta el workflow **Deploy project showcase to GitHub Pages** desde la pestaña Actions.
+| Path | Purpose |
+|---|---|
+| `analizador_archivos.py` | Aplicación de escritorio |
+| `docs/` | Showcase estático |
+| `tests/` | Pruebas automatizadas |
+| `.github/workflows/` | Validaciones y publicación |
 
-El workflow queda omitido hasta que la variable esté configurada. La página es informativa; la aplicación de escritorio no se ejecuta en el navegador.
+## File operations & safety
 
-## Licencia
+Las acciones de eliminación son permanentes y no utilizan la Papelera de reciclaje. Revisa los elementos seleccionados antes de confirmar. Para una operación reversible, utiliza primero la función de mover archivos.
 
-Consulta [LICENSE](LICENSE).
+La coincidencia SHA-256 identifica contenido idéntico; no demuestra que un archivo sea seguro o auténtico.
+
+## Deployment
+
+La página de presentación se publica mediante GitHub Pages. La aplicación requiere Python y un entorno de escritorio compatible.
+
+## License
+
+See [LICENSE](LICENSE).
