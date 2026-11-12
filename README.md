@@ -38,9 +38,13 @@ La detección por hash identifica contenido idéntico; no demuestra que un archi
 python -m unittest discover -s tests -v
 ```
 
-## Showcase
+## Publicar la página de presentación
 
-La página de presentación es un índice informativo; la aplicación de escritorio no se ejecuta en el navegador. Para publicarla, activa GitHub Pages en **Settings → Pages → Build and deployment → Source → GitHub Actions**. Después ejecuta el workflow **Deploy project showcase to GitHub Pages** desde Actions.
+1. En **Settings → Pages**, selecciona **GitHub Actions** como origen de publicación.
+2. En **Settings → Secrets and variables → Actions → Variables**, crea `ENABLE_PAGES` con valor `true`.
+3. Ejecuta el workflow **Deploy project showcase to GitHub Pages** desde la pestaña Actions.
+
+El workflow queda omitido hasta que la variable esté configurada. La página es informativa; la aplicación de escritorio no se ejecuta en el navegador.
 
 ## Licencia
 
