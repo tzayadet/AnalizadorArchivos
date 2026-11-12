@@ -153,3 +153,14 @@ dependencia (todo va empaquetado dentro del propio ejecutable).
   ese problema queda registrado como error de ese archivo (o de esa carpeta,
   si es un problema de acceso a nivel de directorio) y el resto del análisis
   continúa con normalidad.
+
+## Activar la demo en GitHub Pages
+
+La demo estática se encuentra en `docs/index.html`. Para publicarla:
+
+1. Abre **Settings → Pages** en este repositorio.
+2. En **Build and deployment**, selecciona **GitHub Actions** como fuente.
+3. En **Settings → Secrets and variables → Actions → Variables**, crea la variable de repositorio `ENABLE_PAGES` con el valor `true`.
+4. Guarda los cambios y realiza un nuevo push que modifique `docs/**` para iniciar el despliegue.
+
+Hasta completar esa configuración, la demo permanece como código fuente y no debe enlazarse como sitio publicado.
