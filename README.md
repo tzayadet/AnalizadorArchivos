@@ -164,3 +164,6 @@ La demo estática se encuentra en `docs/index.html`. Para publicarla:
 4. Guarda los cambios y realiza un nuevo push que modifique `docs/**` para iniciar el despliegue.
 
 Hasta completar esa configuración, la demo permanece como código fuente y no debe enlazarse como sitio publicado.
+
+
+La exportación CSV neutraliza valores de texto que comienzan con caracteres interpretables como fórmulas de Excel o Calc.
