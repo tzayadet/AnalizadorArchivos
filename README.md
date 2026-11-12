@@ -8,13 +8,13 @@
 Herramienta de escritorio para buscar, filtrar y analizar archivos en una o varias carpetas. Combina criterios de búsqueda, detecta duplicados exactos y permite exportar resultados.
 
 <p align="center">
-  <a href="https://tzayadet.github.io/AnalizadorArchivos/"><strong>PROJECT SHOWCASE ↗</strong></a> ·
-  <a href="https://github.com/tzayadet/AnalizadorArchivos"><strong>SOURCE CODE</strong></a>
+  <a href="https://github.com/tzayadet/AnalizadorArchivos/blob/main/docs/index.html"><strong>SHOWCASE SOURCE</strong></a> ·
+  <a href="https://github.com/tzayadet/AnalizadorArchivos"><strong>SOURCE CODE</strong></a> · <sub>PAGES ACTIVATION PENDING</sub>
 </p>
 
 [![Python syntax check](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml/badge.svg)](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml)
 
-> GitHub Pages contiene una ficha de presentación. La aplicación de escritorio no se ejecuta dentro del navegador.
+> La página de GitHub Pages es una ficha de presentación; la aplicación de escritorio requiere Python y no se ejecuta en el navegador.
 
 ## Features
 
@@ -52,7 +52,7 @@ python -m unittest discover -s tests -v
 | `tests/` | Pruebas automatizadas |
 | `.github/workflows/` | Validaciones y publicación |
 
-## File operations & safety
+## File operations and safety
 
 Las acciones de eliminación son permanentes y no utilizan la Papelera de reciclaje. Revisa los elementos seleccionados antes de confirmar. Para una operación reversible, utiliza primero la función de mover archivos.
 
@@ -60,7 +60,7 @@ La coincidencia SHA-256 identifica contenido idéntico; no demuestra que un arch
 
 ## Deployment
 
-La página de presentación se publica mediante GitHub Pages. La aplicación requiere Python y un entorno de escritorio compatible.
+El workflow de Pages está preparado, pero la publicación está pendiente de activar GitHub Pages en la configuración del repositorio. La aplicación requiere Python y un entorno de escritorio compatible.
 
 ## License
 
