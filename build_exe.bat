@@ -1,61 +1,111 @@
 @echo off
-setlocal
+setlocal EnableExtensions
 title Analizador de Archivos PRO - Generador de EXE
 color 0A
+
+REM Always work from the directory containing this script.
+pushd "%~dp0"
+if errorlevel 1 (
+    echo [ERROR] No se pudo acceder al directorio del proyecto.
+    exit /b 1
+)
 
 echo ============================================================
 echo   Analizador de Archivos PRO - Generador de EXE portable
 echo ============================================================
 echo.
 echo Este script debe ejecutarse en Windows, con Python instalado.
-echo Descarga Python (si no lo tienes) desde https://www.python.org/downloads/
-echo IMPORTANTE al instalar Python: marca la casilla "Add Python to PATH".
+echo Descarga Python desde https://www.python.org/downloads/
+echo IMPORTANTE: marca "Add Python to PATH" durante la instalacion.
 echo.
 pause
 
-REM --- Comprobar que Python está disponible ---
 where python >nul 2>nul
 if errorlevel 1 (
-    echo.
-    echo [ERROR] No se encontro "python" en el PATH del sistema.
-    echo Instala Python desde https://www.python.org/downloads/
-    echo y vuelve a ejecutar este script.
-    echo.
+    echo [ERROR] No se encontro Python en PATH.
+    popd
+    pause
+    exit /b 1
+)
+
+set "BUILD_DIR=%TEMP%\AnalizadorArchivosPRO_build_%RANDOM%_%RANDOM%"
+set "DIST_DIR=%~dp0dist"
+
+echo.
+echo [1/4] Creando entorno virtual aislado...
+if not exist "venv_build\Scripts\python.exe" (
+    python -m venv venv_build
+    if errorlevel 1 (
+        echo [ERROR] No se pudo crear el entorno virtual.
+        popd
+        pause
+        exit /b 1
+    )
+)
+
+call "venv_build\Scripts\activate.bat"
+if errorlevel 1 (
+    echo [ERROR] No se pudo activar el entorno virtual.
+    popd
     pause
     exit /b 1
 )
 
 echo.
-echo [1/4] Creando entorno virtual aislado (venv_build)...
-python -m venv venv_build
-call venv_build\Scripts\activate.bat
+echo [2/4] Instalando PyInstaller...
+python -m pip install --upgrade pip
+if errorlevel 1 goto BUILD_FAILED
+python -m pip install pyinstaller
+if errorlevel 1 goto BUILD_FAILED
 
 echo.
-echo [2/4] Actualizando pip e instalando PyInstaller...
-python -m pip install --upgrade pip >nul
-pip install pyinstaller
+echo [3/4] Generando el ejecutable en un directorio temporal...
+python -m PyInstaller --onefile --windowed --clean --noconfirm ^
+  --name "AnalizadorDeArchivosPRO" ^
+  --distpath "%BUILD_DIR%\dist" ^
+  --workpath "%BUILD_DIR%\work" ^
+  --specpath "%BUILD_DIR%\spec" ^
+  "analizador_archivos.py"
+if errorlevel 1 goto BUILD_FAILED
+
+if not exist "%BUILD_DIR%\dist\AnalizadorDeArchivosPRO.exe" (
+    echo [ERROR] PyInstaller no genero el ejecutable esperado.
+    goto BUILD_FAILED
+)
 
 echo.
-echo [3/4] Generando el ejecutable portable (un unico archivo .exe, sin consola)...
-REM  --onefile     -> un solo .exe portable (no necesita instalar nada en el PC destino)
-REM  --windowed    -> sin ventana de consola negra detras de la GUI
-REM  --name        -> nombre del ejecutable final
-REM  --clean       -> limpia cache de compilaciones anteriores
-pyinstaller --onefile --windowed --clean --name "AnalizadorDeArchivosPRO" analizador_archivos.py
+echo [4/4] Copiando el ejecutable sin sobrescribir archivos existentes...
+if not exist "%DIST_DIR%\." mkdir "%DIST_DIR%"
+if errorlevel 1 goto BUILD_FAILED
 
-echo.
-echo [4/4] Limpiando archivos temporales de compilacion...
-rmdir /s /q build >nul 2>nul
-del /q AnalizadorDeArchivosPRO.spec >nul 2>nul
+set "OUTPUT_NAME=AnalizadorDeArchivosPRO"
+set /a SUFFIX=2
+:CHECK_OUTPUT
+if exist "%DIST_DIR%\%OUTPUT_NAME%.exe" (
+    set "OUTPUT_NAME=AnalizadorDeArchivosPRO_%SUFFIX%"
+    set /a SUFFIX+=1
+    goto CHECK_OUTPUT
+)
+
+move "%BUILD_DIR%\dist\AnalizadorDeArchivosPRO.exe" "%DIST_DIR%\%OUTPUT_NAME%.exe" >nul
+if errorlevel 1 goto BUILD_FAILED
+
+if exist "%BUILD_DIR%\." rmdir /s /q "%BUILD_DIR%"
 
 echo.
 echo ============================================================
-echo   LISTO. Tu ejecutable portable esta en:
-echo   dist\AnalizadorDeArchivosPRO.exe
-echo.
-echo   Puedes copiar ese unico archivo .exe a cualquier PC con
-echo   Windows y funcionara sin instalar Python ni nada mas
-echo   (standalone / portable).
+echo   LISTO: dist\%OUTPUT_NAME%.exe
+echo   El directorio de origen y los .spec existentes no se han tocado.
 echo ============================================================
-echo.
+popd
 pause
+exit /b 0
+
+:BUILD_FAILED
+echo.
+echo [ERROR] El proceso de compilacion ha fallado.
+echo Los archivos del proyecto no se han eliminado.
+if exist "%BUILD_DIR%\." rmdir /s /q "%BUILD_DIR%"
+popd
+pause
+exit /b 1
