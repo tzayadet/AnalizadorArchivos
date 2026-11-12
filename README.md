@@ -1,5 +1,7 @@
 # Analizador de Archivos PRO
 
+**Showcase:** https://tzayadet.github.io/AnalizadorArchivos/
+
 [![Python syntax check](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml/badge.svg)](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml)
 
 Herramienta de escritorio para buscar, filtrar y detectar archivos duplicados
