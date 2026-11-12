@@ -19,7 +19,6 @@ concurrency:
 
 jobs:
   deploy:
-    if: ${{ vars.ENABLE_PAGES == 'true' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
