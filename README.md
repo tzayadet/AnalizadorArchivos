@@ -8,8 +8,8 @@
 Herramienta de escritorio para buscar, filtrar y analizar archivos en una o varias carpetas. Combina criterios de búsqueda, detecta duplicados exactos y permite exportar resultados.
 
 <p align="center">
-  <a href="https://github.com/tzayadet/AnalizadorArchivos/blob/main/docs/index.html"><strong>SHOWCASE SOURCE</strong></a> ·
-  <a href="https://github.com/tzayadet/AnalizadorArchivos"><strong>SOURCE CODE</strong></a> · <sub>PAGES ACTIVATION PENDING</sub>
+  <a href="https://tzayadet.github.io/AnalizadorArchivos/"><strong>LIVE DEMO ↗</strong></a> ·
+  <a href="https://github.com/tzayadet/AnalizadorArchivos"><strong>SOURCE CODE</strong></a> · <strong>LIVE DEMO ↗</strong>
 </p>
 
 [![Python syntax check](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml/badge.svg)](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml)
