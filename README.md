@@ -8,8 +8,8 @@
 Herramienta de escritorio para buscar, filtrar y analizar archivos en una o varias carpetas. Combina criterios de búsqueda, detecta duplicados exactos y permite exportar resultados.
 
 <p align="center">
-  <a href="https://tzayadet.github.io/AnalizadorArchivos/"><strong>LIVE DEMO ↗</strong></a> ·
-  <a href="https://github.com/tzayadet/AnalizadorArchivos"><strong>SOURCE CODE</strong></a> · <strong>LIVE DEMO ↗</strong>
+  <a href="https://tzayadet.github.io/AnalizadorArchivos/"><strong>PROJECT SHOWCASE ↗</strong></a> ·
+  <a href="https://github.com/tzayadet/AnalizadorArchivos"><strong>SOURCE CODE</strong></a>
 </p>
 
 [![Python syntax check](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml/badge.svg)](https://github.com/tzayadet/AnalizadorArchivos/actions/workflows/python-syntax.yml)
@@ -60,7 +60,7 @@ La coincidencia SHA-256 identifica contenido idéntico; no demuestra que un arch
 
 ## Deployment
 
-El workflow de Pages está preparado, pero la publicación está pendiente de activar GitHub Pages en la configuración del repositorio. La aplicación requiere Python y un entorno de escritorio compatible.
+El workflow de Pages está preparado. La publicación de la ficha estática requiere habilitar GitHub Pages con GitHub Actions en la configuración del repositorio. La aplicación requiere Python y un entorno de escritorio compatible.
 
 ## License
 
